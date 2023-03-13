@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://rmechi.github.io/python/slices.html" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Slices - Python lang Reference</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Slices";
+        var mkdocs_page_input_path = "python\\slices.md";
+        var mkdocs_page_url = "/python/slices.html";
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/yaml.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../index.html" class="icon icon-home"> Python lang Reference
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tutorial</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="arrays.html">Arrays</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="slices.html">Slices</a>
+    <ul class="current">
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="maps.html">GoMaps</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Python lang Reference</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html" class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Tutorial &raquo;</li>
+      <li>Slices</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/rmechi/python/edit/master/docs/docs/python/slices.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="go-slices">Go slices<a class="headerlink" href="#go-slices" title="Permanent link">#</a></h2>
+<ul>
+<li>used to store values of same data type.</li>
+<li>flixible than arrays. i.e. length of an array can grow or shrink</li>
+</ul>
+<h2 id="declare-a-slice">declare a slice:<a class="headerlink" href="#declare-a-slice" title="Permanent link">#</a></h2>
+<pre><code>slice_name := []datatype{values}
+slice_name := []datatype{}  // here length is 0 and capacity is 0 and empty
+letters := []string{&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;}
+numbers := []int{1, 3, 3, 4, 5}
+</code></pre>
+<h2 id="create-slice-using-make-func">create slice using <code>make</code> func:<a class="headerlink" href="#create-slice-using-make-func" title="Permanent link">#</a></h2>
+<p>declaring slice using <code>make</code>:</p>
+<pre><code>slice_name := make([]type, length, capacity)
+</code></pre>
+<ul>
+<li>capacity equal to length if not defined
+example:</li>
+</ul>
+<pre><code>package main
+
+import (
+    &quot;fmt&quot;
+)
+
+func main() {
+    testclice := make([]int, 0)
+    fmt.Printf(&quot;length = %d\n&quot;, len(testclice))
+    fmt.Printf(&quot;capacity = %d\n&quot;, cap(testclice))
+    testclice = append(testclice, 1, 2, 3, 4, 5)
+    fmt.Println(testclice)
+    fmt.Printf(&quot;length after append = %d\n&quot;, len(testclice))
+    fmt.Printf(&quot;capacity after append = %d\n&quot;, cap(testclice))
+
+    fmt.Println(&quot;----------------------------&quot;)
+
+    testclice1 := make([]int, 2, 3)
+    fmt.Printf(&quot;length = %d\n&quot;, len(testclice1))
+    fmt.Printf(&quot;capacity = %d\n&quot;, cap(testclice1))
+    testclice1 = append(testclice1, 1, 2, 3 ,4 , 5 )
+    fmt.Println(testclice1)
+    fmt.Printf(&quot;length after append = %d\n&quot;, len(testclice1))
+    fmt.Printf(&quot;capacity after append = %d\n&quot;, cap(testclice1))
+}
+</code></pre>
+<p>output:</p>
+<pre><code>length = 0
+capacity = 0
+[1 2 3 4 5]
+length after append = 5
+capacity after append = 6
+----------------------------
+length = 2
+capacity = 3
+[0 0 1 2 3 4 5]
+length after append = 7
+capacity after append = 8
+</code></pre>
+<h2 id="creating-a-slice-from-an-array">creating a slice from an array:<a class="headerlink" href="#creating-a-slice-from-an-array" title="Permanent link">#</a></h2>
+<p>usage:</p>
+<pre><code>var testarray = [length]datatype{values} 
+myslice := testarray[start:end]
+</code></pre>
+<p>example:</p>
+<pre><code>package main
+
+import (
+    &quot;fmt&quot;
+)
+
+func main() {
+
+    testarray := [5]int{1, 2, 3, 4, 5}
+    testslice := testarray[3:5]
+    fmt.Printf(&quot;length = %d\n&quot;, len(testslice))
+    fmt.Printf(&quot;capacity = %d\n&quot;, cap(testslice))
+    fmt.Println(testslice)
+
+    fmt.Println(&quot;----------------------------&quot;)
+
+    y_array := [6]byte{'G', 'o', 'l', 'a', 'n', 'g'}
+    fmt.Println(y_array)
+    y_slice := y_array[3:5]
+    fmt.Println(y_slice)
+
+}
+</code></pre>
+<p>output:</p>
+<pre><code>length = 2
+capacity = 2
+[4 5]
+------------------
+[71 111 108 97 110 103]
+[97 110]
+</code></pre>
+<h2 id="appending-to-slice">appending to slice<a class="headerlink" href="#appending-to-slice" title="Permanent link">#</a></h2>
+<p>usahe:</p>
+<pre><code>c := append(slice1, slice2...)        # merging 2 slices
+c := append(slice1, &quot;item1&quot;, &quot;item2&quot; )  # adding items to slice
+</code></pre>
+<p>example:</p>
+<pre><code>package main
+
+import (
+    &quot;fmt&quot;
+)
+
+func main() {
+
+    a := []string{&quot;John&quot;, &quot;Paul&quot;}
+    b := []string{&quot;George&quot;, &quot;Ringo&quot;, &quot;Pete&quot;}
+    a = append(a, b...) // equivalent to &quot;append(a, b[0], b[1], b[2])&quot;
+    fmt.Println(a)
+    a = append(a, &quot;something&quot;)
+    fmt.Println(a)
+}
+</code></pre>
+<p>output:</p>
+<pre><code>[John Paul George Ringo Pete]
+[John Paul George Ringo Pete something]
+</code></pre>
+<h1 id="get-and-change-a-element-from-slice">get and change a element from slice<a class="headerlink" href="#get-and-change-a-element-from-slice" title="Permanent link">#</a></h1>
+<p>usage:</p>
+<pre><code>slice[index] = &quot;new_value&quot;
+</code></pre>
+<p>example:</p>
+<pre><code>package main
+
+import (
+    &quot;fmt&quot;
+)
+
+func main() {
+
+    b := []string{&quot;George&quot;, &quot;Ringo&quot;, &quot;Pete&quot;}
+    fmt.Println(b)
+    b[0] = &quot;Tom&quot;
+    fmt.Println(b)
+
+}
+</code></pre>
+<p>output:</p>
+<pre><code>[George Ringo Pete]
+[Tom Ringo Pete]
+</code></pre>
+<h2 id="copy-function"><code>copy</code> function<a class="headerlink" href="#copy-function" title="Permanent link">#</a></h2>
+<p>usage:</p>
+<pre><code>copy(dest, src)
+</code></pre>
+<p>as per  https://go.dev/blog/slices-intro
+- re-slicing a slice doesn’t make a copy of the underlying array. The full array will be kept in memory until it is no longer referenced. Occasionally this can cause the program to hold all the data in memory when only a small piece of it is needed.
+effective:</p>
+<pre><code>var digitRegexp = regexp.MustCompile(&quot;[0-9]+&quot;)
+
+func FindDigits(filename string) []byte {
+    b, _ := ioutil.ReadFile(filename)
+    return digitRegexp.Find(b)
+}
+</code></pre>
+<p>effective:</p>
+<pre><code>func CopyDigits(filename string) []byte {
+    b, _ := ioutil.ReadFile(filename)
+    b = digitRegexp.Find(b)
+    c := make([]byte, len(b))
+    copy(c, b)
+    return c
+}
+</code></pre>
+<p>example:</p>
+<pre><code>package main
+import (&quot;fmt&quot;)
+
+func main() {
+  main_slice := []int{1,2,3,4,5,6,7,8,9,10}
+  fmt.Printf(&quot;main_slice = %v\n&quot;, main_slice)
+  fmt.Printf(&quot;main_slice length= %v\n&quot;, len(main_slice))
+  fmt.Printf(&quot;main_slice capacity = %v\n&quot;, cap(main_slice))
+
+
+  sub_slice := main_slice[:len(main_slice)-5]
+  fmt.Printf(&quot;sub_slice = %v\n&quot;,sub_slice)
+  fmt.Printf(&quot;sub_slice length = %d\n&quot;, len(sub_slice))
+  fmt.Printf(&quot;sub_slice capacity = %d\n&quot;, cap(sub_slice))
+
+  // copy
+  new_slice := make([]int, len(sub_slice))
+  copy(new_slice, sub_slice)
+
+  fmt.Printf(&quot;new_slice = %v\n&quot;,new_slice)
+  fmt.Printf(&quot;new_slice length = %d\n&quot;, len(new_slice))
+  fmt.Printf(&quot;new_slice capacity = %d\n&quot;, cap(new_slice))
+}
+</code></pre>
+<p>output:</p>
+<pre><code>main_slice = [1 2 3 4 5 6 7 8 9 10]
+main_slice length= 10
+main_slice capacity = 10
+sub_slice = [1 2 3 4 5]
+sub_slice length = 5
+sub_slice capacity = 10
+new_slice = [1 2 3 4 5]
+new_slice length = 5
+new_slice capacity = 5
+</code></pre>
+<h2 id="loop-through">loop through<a class="headerlink" href="#loop-through" title="Permanent link">#</a></h2>
+<p>example:</p>
+<pre><code>package main
+import (&quot;fmt&quot;)
+
+func main() {
+
+  arr6 := []string{&quot;tom&quot;, &quot;dom&quot;}
+
+  for i, s := range arr6 {
+    fmt.Println(i, s)
+  }
+
+  for _, s := range arr6 {
+    fmt.Println(s)
+  }
+
+
+}
+</code></pre>
+<p>output:</p>
+<pre><code>0 tom
+1 dom
+tom
+dom
+</code></pre>
+<h2 id="memory-representation">Memory Representation<a class="headerlink" href="#memory-representation" title="Permanent link">#</a></h2>
+<p>A slice is allocated differently from an array, and is actually a modified pointer. Each slice contains three pieces of information:
+- The pointer to the sequence of data
+- The length: which denotes the total number of elements currently contained.
+- The capacity: which is the total number of memory locations provisioned.</p>
+<h2 id="reference-passing">Reference Passing<a class="headerlink" href="#reference-passing" title="Permanent link">#</a></h2>
+<ul>
+<li>
+<p>When you assign a slice to another variable, you still pass by value. The value here refers to just the pointer, length, and capacity, and not the memory occupied by the elements themselves.</p>
+</li>
+<li>
+<p>Everything in Go is passed by value, slices too. But a slice value is a header, describing a contiguous section of a backing array, and <strong>a slice value only contains a pointer to the array where the elements are actually stored</strong>. The slice value does not include its elements (unlike arrays).</p>
+</li>
+<li>
+<p>So when you pass a slice to a function, a copy will be made from this header, including the pointer, which will point to the same backing array. Modifying the elements of the slice implies modifying the elements of the backing array, and so all slices which share the same backing array will "observe" the change.</p>
+</li>
+</ul>
+<h2 id="more-examples">more examples<a class="headerlink" href="#more-examples" title="Permanent link">#</a></h2>
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+func main() {
+
+
+    fmt.Println(&quot;Go takes a more lean and lazy approach in doing this. It keeps modifying the same underlying array until the capacity of a slice is reached.&quot;)
+    fmt.Println(&quot;Because since s still has capacity, both a and b share the same data ptr. If you change the capacity to 4, it prints:&quot;)
+    t := make([]int, 0, 5)
+    t = append(t, []int{1, 2, 3, 4}...)
+
+    fmt.Printf(&quot;t: length: %d, capacity: %d, data: %v\n&quot;, len(t), cap(t), t)
+
+    c := append(t, 5)
+    fmt.Printf(&quot;a: length: %d, capacity: %d, data: %v\n&quot;, len(c), cap(c), c)
+
+    d := append(t, 6)
+    fmt.Printf(&quot;d: length: %d, capacity: %d, data: %v\n&quot;, len(d), cap(d), d)
+    fmt.Printf(&quot;c: length: %d, capacity: %d, data: %v\n&quot;, len(c), cap(c), c)
+    fmt.Println(&quot; &quot;)
+
+
+
+    fmt.Println(&quot; &quot;)
+    fmt.Println(&quot;when new variable added slice capacity doubles&quot;)
+
+    s := make([]int, 0, 0)
+    s = append(s, []int{1, 2, 3, 4}...)
+
+    fmt.Printf(&quot;s: length: %d, capacity: %d, data: %v\n&quot;, len(s), cap(s), s)
+
+    a := append(s, 5)
+    fmt.Printf(&quot;a: length: %d, capacity: %d, data: %v\n&quot;, len(a), cap(a), a)
+
+    b := append(s, 6)
+    fmt.Printf(&quot;b: length: %d, capacity: %d, data: %v\n&quot;, len(b), cap(b), b)
+    fmt.Printf(&quot;a: length: %d, capacity: %d, data: %v\n&quot;, len(a), cap(a), a)
+
+    a = append(a, 7, 8, 9, 10)
+    fmt.Printf(&quot;a: length: %d, capacity: %d, data: %v\n&quot;, len(a), cap(a), a)
+}
+
+</code></pre>
+<p>output:</p>
+<pre><code>Go takes a more lean and lazy approach in doing this. It keeps modifying the same underlying array until the capacity of a slice is reached.
+Because since s still has capacity, both a and b share the same data ptr. If you change the capacity to 4, it prints:
+t: length: 4, capacity: 5, data: [1 2 3 4]
+a: length: 5, capacity: 5, data: [1 2 3 4 5]
+d: length: 5, capacity: 5, data: [1 2 3 4 6]
+c: length: 5, capacity: 5, data: [1 2 3 4 6]
+
+
+when new variable added slice capacity doubles
+s: length: 4, capacity: 4, data: [1 2 3 4]
+a: length: 5, capacity: 8, data: [1 2 3 4 5]
+b: length: 5, capacity: 8, data: [1 2 3 4 6]
+a: length: 5, capacity: 8, data: [1 2 3 4 5]
+a: length: 9, capacity: 16, data: [1 2 3 4 5 7 8 9 10]
+</code></pre>
+<p>More Reading:
+- https://www.sohamkamani.com/golang/arrays-vs-slices/
+- https://stackoverflow.com/questions/39993688/are-slices-passed-by-value
+- https://www.geeksforgeeks.org/how-to-pass-a-slice-to-function-in-golang/
+- https://stackoverflow.com/questions/28115599/when-does-golang-append-create-a-new-slice</p>
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+func main() {
+
+    fmt.Println(&quot;array address&quot;)
+    array1 := [3]int{6, 1, 2}
+    array2 := array1
+    fmt.Printf(&quot;Address of array = %v: %p\n&quot;, array1, &amp;array1)
+    fmt.Printf(&quot;Address of array = %v: %p\n&quot;, array2, &amp;array2)
+    fmt.Println(&quot;-------&quot;)
+    array2[1] = 3333
+    fmt.Println(array1)
+    fmt.Println(array2)
+    fmt.Println(&quot;---array done----&quot;)
+
+    fmt.Println(&quot;--- print address of slice&quot;)
+    slice1 := []int{6, 1, 2}
+    slice2 := slice1
+    fmt.Printf(&quot;Address of slice = %v: %p\n&quot;, slice1, &amp;slice1)
+    fmt.Printf(&quot;Address of slice = %v: %p\n&quot;, slice2, &amp;slice2)
+    fmt.Println(&quot;--- print address of slice underlying array&quot;)
+    fmt.Printf(&quot;Address of slice = %v: %p\n&quot;, slice1, slice1)
+    fmt.Printf(&quot;Address of slice = %v: %p\n&quot;, slice2, slice2)
+
+    fmt.Println(&quot;Go takes a more lean and lazy approach in doing this. It keeps modifying the same underlying array until the capacity of a slice is reached.&quot;)
+    fmt.Println(&quot;Because since s still has capacity, both a and b share the same data ptr. If you change the capacity to 4, it prints:&quot;)
+    t := make([]int, 0, 5)
+    t = append(t, []int{1, 2, 3, 4}...)
+
+    fmt.Printf(&quot;t: length: %d, capacity: %d, pointer to underlying array: %p, data: %v\n&quot;, len(t), cap(t), t, t)
+    c := append(t, 5)
+    fmt.Printf(&quot;a: length: %d, capacity: %d, pointer to underlying array: %p, data: %v\n&quot;, len(c), cap(c), c, c)
+    d := append(t, 6)
+    fmt.Printf(&quot;d: length: %d, capacity: %d, pointer to underlying array: %p, data: %v\n&quot;, len(d), cap(d), d, d)
+    fmt.Printf(&quot;c: length: %d, capacity: %d, pointer to underlying array: %p, data: %v\n&quot;, len(c), cap(c), c, c)
+    fmt.Println(&quot; &quot;)
+
+    fmt.Println(&quot; &quot;)
+    fmt.Println(&quot;when new variable added slice capacity doubles&quot;)
+    s := make([]int, 0, 0)
+    s = append(s, []int{1, 2, 3, 4}...)
+    fmt.Printf(&quot;s: length: %d, capacity: %d, pointer to underlying array: %p, data: %v\n&quot;, len(s), cap(s), s, s)
+    a := append(s, 5)
+    fmt.Printf(&quot;a: length: %d, capacity: %d, pointer to underlying array: %p, data: %v\n&quot;, len(a), cap(a), a, a)
+    b := append(s, 6)
+    fmt.Printf(&quot;b: length: %d, capacity: %d,pointer to underlying array: %p,  data: %v\n&quot;, len(b), cap(b), b, b)
+    fmt.Printf(&quot;a: length: %d, capacity: %d, pointer to underlying array: %p, data: %v\n&quot;, len(a), cap(a), a, a)
+    a = append(a, 7, 8, 9, 10)
+    fmt.Printf(&quot;a: length: %d, capacity: %d, pointer to underlying array: %p, data: %v\n&quot;, len(a), cap(a), a, a)
+}
+</code></pre>
+<pre><code>Address of array = [6 1 2]: 0xc000128090
+Address of array = [6 1 2]: 0xc0001280a8
+-------
+[6 1 2]
+[6 3333 2]
+---array done----
+--- print address of slice
+Address of slice = [6 1 2]: 0xc000112060
+Address of slice = [6 1 2]: 0xc000112078
+--- print address of slice underlying array
+Address of slice = [6 1 2]: 0xc000128138
+Address of slice = [6 1 2]: 0xc000128138
+Go takes a more lean and lazy approach in doing this. It keeps modifying the same underlying array until the capacity of a slice is reached.
+Because since s still has capacity, both a and b share the same data ptr. If you change the capacity to 4, it prints:
+t: length: 4, capacity: 5, pointer to underlying array: 0xc00013c090, data: [1 2 3 4]
+a: length: 5, capacity: 5, pointer to underlying array: 0xc00013c090, data: [1 2 3 4 5]
+d: length: 5, capacity: 5, pointer to underlying array: 0xc00013c090, data: [1 2 3 4 6]
+c: length: 5, capacity: 5, pointer to underlying array: 0xc00013c090, data: [1 2 3 4 6]
+
+
+when new variable added slice capacity doubles
+s: length: 4, capacity: 4, pointer to underlying array: 0xc0001240a0, data: [1 2
+                                                                               2 3 4]
+a: length: 5, capacity: 8, pointer to underlying array: 0xc000140100, data: [1 2
+                                                                               2 3 4 5]
+b: length: 5, capacity: 8,pointer to underlying array: 0xc000140140,  data: [1 2
+                                                                               2 3 4 6]
+a: length: 5, capacity: 8, pointer to underlying array: 0xc000140100, data: [1 2
+                                                                               2 3 4 5]
+a: length: 9, capacity: 16, pointer to underlying array: 0xc00015a080, data: [1 
+                                                                                2 3 4 5 7 8 9 10]
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="arrays.html" class="btn btn-neutral float-left" title="Arrays"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="maps.html" class="btn btn-neutral float-right" title="GoMaps">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/rmechi/python" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="arrays.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="maps.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

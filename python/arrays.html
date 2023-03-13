@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://rmechi.github.io/python/arrays.html" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Arrays - Python lang Reference</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Arrays";
+        var mkdocs_page_input_path = "python\\arrays.md";
+        var mkdocs_page_url = "/python/arrays.html";
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/yaml.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../index.html" class="icon icon-home"> Python lang Reference
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tutorial</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="arrays.html">Arrays</a>
+    <ul class="current">
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="slices.html">Slices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="maps.html">GoMaps</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Python lang Reference</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html" class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Tutorial &raquo;</li>
+      <li>Arrays</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/rmechi/python/edit/master/docs/docs/python/arrays.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="go-arrays">Go Arrays<a class="headerlink" href="#go-arrays" title="Permanent link">#</a></h2>
+<ul>
+<li>Go arrays are fixed length. you can define length by <code>[length]</code> ex. <code>[5]</code> or inferred <code>[...]</code> compiler decide in this case.</li>
+</ul>
+<h2 id="declare-a-slice">declare a slice:<a class="headerlink" href="#declare-a-slice" title="Permanent link">#</a></h2>
+<pre><code>var array = [length]datatype{values}
+var array = [...]datatype{values}
+array := [length]datatype{values}
+array := [...]datatype{values}
+</code></pre>
+<h2 id="access-and-change-the-element">access and change the element:<a class="headerlink" href="#access-and-change-the-element" title="Permanent link">#</a></h2>
+<p>example:</p>
+<pre><code>package main
+import (&quot;fmt&quot;)
+
+func main() {
+  arr := [4]int{1, 2, 3, 4}
+  fmt.Printf(&quot;arr element = %v\n&quot;, arr[1])
+  arr[1] = 22
+  fmt.Printf(&quot;arr element = %v\n&quot;, arr[1])
+
+}
+</code></pre>
+<p>output:</p>
+<pre><code>arr element = 2
+arr element = 22
+</code></pre>
+<h2 id="more-examples">more examples<a class="headerlink" href="#more-examples" title="Permanent link">#</a></h2>
+<p>example:</p>
+<pre><code>package main
+import (&quot;fmt&quot;)
+
+func main() {
+  arr1 := [4]string{} 
+  arr2 := [4]string{&quot;a&quot;,&quot;b&quot;} 
+  arr3 := [4]string{&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;} 
+  arr4 := [4]string{1:&quot;tom&quot;,3:&quot;bom&quot;}
+  arr5 := [4]int{1:10,2:40}
+  arr6 := [...]int{1,2,3,4,5,6,7}
+
+  fmt.Println(&quot;array is&quot;, arr1, &quot;length is&quot;, len(arr1))
+  fmt.Println(&quot;array is&quot;, arr2, &quot;length is&quot;, len(arr2))
+  fmt.Println(&quot;array is&quot;, arr3, &quot;length is&quot;, len(arr3))
+  fmt.Println(&quot;array is&quot;, arr4, &quot;length is&quot;, len(arr4))
+  fmt.Println(&quot;array is&quot;, arr5, &quot;length is&quot;, len(arr5))
+  fmt.Println(&quot;array is&quot;, arr6, &quot;length is&quot;, len(arr6))
+
+}
+</code></pre>
+<p>output:</p>
+<pre><code>array is [   ] length is 4
+array is [a b  ] length is 4
+array is [a b c d] length is 4
+array is [ tom  bom] length is 4
+array is [0 10 40 0] length is 4
+array is [1 2 3 4 5 6 7] length is 7
+</code></pre>
+<h2 id="loop-through">loop through<a class="headerlink" href="#loop-through" title="Permanent link">#</a></h2>
+<p>example:</p>
+<pre><code>package main
+import (&quot;fmt&quot;)
+
+func main() {
+
+  arr6 := [...]string{&quot;tom&quot;, &quot;dom&quot;}
+
+  for i, s := range arr6 {
+    fmt.Println(i, s)
+  }
+
+  for _, s := range arr6 {
+    fmt.Println(s)
+  }
+
+
+}
+</code></pre>
+<p>output:</p>
+<pre><code>0 tom
+1 dom
+tom
+dom
+</code></pre>
+<h2 id="memory-representation">Memory Representation<a class="headerlink" href="#memory-representation" title="Permanent link">#</a></h2>
+<ul>
+<li>In Go, there is no such thing as passing by reference. Everything is passed by value. If you assign the value of an array to another variable, the entire value is copied.</li>
+</ul>
+<pre><code>arr2 := arr
+</code></pre>
+<ul>
+<li>If you want to pass just the “reference” to the array, you can use pointers:</li>
+</ul>
+<pre><code>arr2 := &amp;arr
+</code></pre>
+<p>More Reading:
+- https://www.sohamkamani.com/golang/arrays-vs-slices/
+- https://www.godesignpatterns.com/2014/05/arrays-vs-slices.html</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="slices.html" class="btn btn-neutral float-right" title="Slices">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/rmechi/python" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../index.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="slices.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
