@@ -6,18 +6,17 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="terraform tutorial with examples" name="description"/>
-<link href="https://rmechi.github.io/" rel="canonical"/>
-<link href="terraform/arrays/" rel="next"/>
-<link href="assets/images/favicon.png" rel="icon"/>
+<link href="https://rmechi.github.io/terraform/datatypes/" rel="canonical"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.4.3, mkdocs-material-9.1.17" name="generator"/>
-<title>terraform Reference</title>
-<link href="assets/stylesheets/main.26e3688c.min.css" rel="stylesheet"/>
-<link href="assets/stylesheets/palette.ecc896b0.min.css" rel="stylesheet"/>
+<title>Datatypes - terraform Reference</title>
+<link href="../../assets/stylesheets/main.26e3688c.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.ecc896b0.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
-<script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-<link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -28,16 +27,13 @@
                 body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
                 body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
                 body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-                </style><script src="assets/javascripts/glightbox.min.js"></script></head>
+                </style><script src="../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="indigo" data-md-color-primary="maroon" data-md-color-scheme="default" dir="ltr">
 <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#welcome-to-python-tutorial">
-          Skip to content
-        </a>
 </div>
 <div data-md-component="announce">
 <aside class="md-banner">
@@ -52,7 +48,7 @@
 </div>
 <header class="md-header" data-md-component="header">
 <nav aria-label="Header" class="md-header__inner md-grid">
-<a aria-label="terraform Reference" class="md-header__button md-logo" data-md-component="logo" href="." title="terraform Reference">
+<a aria-label="terraform Reference" class="md-header__button md-logo" data-md-component="logo" href="../.." title="terraform Reference">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
 </a>
 <label class="md-header__button md-icon" for="__drawer">
@@ -68,7 +64,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Home
+              Datatypes
             
           </span>
 </div>
@@ -135,12 +131,12 @@
 <div class="md-grid">
 <ul class="md-tabs__list">
 <li class="md-tabs__item">
-<a class="md-tabs__link md-tabs__link--active" href=".">
+<a class="md-tabs__link" href="../..">
       Home
     </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="terraform/arrays/">
+<a class="md-tabs__link" href="../arrays/">
         Tutorial
       </a>
 </li>
@@ -154,7 +150,7 @@
 <div class="md-sidebar__inner">
 <nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
 <label class="md-nav__title" for="__drawer">
-<a aria-label="terraform Reference" class="md-nav__button md-logo" data-md-component="logo" href="." title="terraform Reference">
+<a aria-label="terraform Reference" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="terraform Reference">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
 </a>
     terraform Reference
@@ -170,9 +166,8 @@
 </a>
 </div>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<a class="md-nav__link md-nav__link--active" href=".">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
         Home
       </a>
 </li>
@@ -189,17 +184,17 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="terraform/arrays/">
+<a class="md-nav__link" href="../arrays/">
         Arrays
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="terraform/slices/">
+<a class="md-nav__link" href="../slices/">
         Slices
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="terraform/maps/">
+<a class="md-nav__link" href="../maps/">
         GoMaps
       </a>
 </li>
@@ -221,7 +216,53 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="welcome-to-python-tutorial">Welcome to python tutorial<a class="headerlink" href="#welcome-to-python-tutorial" title="Anchor link to this section for reference">¶</a></h1>
+<h1>Datatypes</h1>
+<p>Data types specify the type of data that a valid Go variable can hold</p>
+<ul>
+<li>Basic Types</li>
+<li>Integers (Signed and UnSigned)</li>
+<li>Floats</li>
+<li>Complex Numbers</li>
+<li>Byte</li>
+<li>Rune</li>
+<li>String</li>
+<li>Booleans</li>
+<li>Composite ( Unnamed ) Types<blockquote>
+<p>In computer science, a composite data type is any data type which can be constructed in a program using its programming language's primitive data types and other composite types.  Composite types are known as “unnamed types”, because they use a type literal to represent the structural definition of the type, instead of using a simple name identifier</p>
+</blockquote>
+</li>
+<li>Non-Reference Types<ul>
+<li>Arrays</li>
+<li>Structs </li>
+</ul>
+</li>
+<li>Reference Types ( Non-primitive )<ul>
+<li>Slices</li>
+<li>Channels</li>
+<li>Maps</li>
+<li>Pointers</li>
+<li>Functions</li>
+</ul>
+</li>
+<li>Interface<ul>
+<li>Special case of empty interface</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>A primitive data type</strong> type that hold simple values. A primitive type has always a value, while non-primitive types can be null.  In golang, we have string, numeric type ( integer, float and complex ), bool, and error type.  variable contains the value </p>
+<p><strong>Non-primitive data types</strong> Non-Primitive data types refer to objects and hence they are called reference types. variable contains address of the value </p>
+</blockquote>
+<p>Default values:
+- String: ""
+- integer, byte, rune is 0
+- Float  0
+- complex 0+0i
+- Booleans False
+- Pointers ( var num *int - fmt.Println(num) ) is nil
+- structs { "", 0 }
+- slices nil
+- map in Go is nil</p>
 </article>
 </div>
 </div>
@@ -231,21 +272,6 @@
           </button>
 </main>
 <footer class="md-footer">
-<nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Next: Arrays" class="md-footer__link md-footer__link--next" href="terraform/arrays/" rel="next">
-<div class="md-footer__title">
-<span class="md-footer__direction">
-                Next
-              </span>
-<div class="md-ellipsis">
-                Arrays
-              </div>
-</div>
-<div class="md-footer__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
-</div>
-</a>
-</nav>
 <div class="md-footer-meta md-typeset">
 <div class="md-footer-meta__inner md-grid">
 <div class="md-copyright">
@@ -257,7 +283,7 @@
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "search.share", "header.autohide", "navigation.footer", "announce.dismiss"], "search": "assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
-<script src="assets/javascripts/bundle.b425cdc4.min.js"></script>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "search.share", "header.autohide", "navigation.footer", "announce.dismiss"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../../assets/javascripts/bundle.b425cdc4.min.js"></script>
 <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": true, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>
