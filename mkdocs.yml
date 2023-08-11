@@ -1,10 +1,10 @@
 ### Site metadata ###
 
-site_name: Python lang Reference
-site_description: 'Python Lang tutorial with examples'
+site_name: terraform Reference
+site_description: 'terraform tutorial with examples'
 site_url: https://rmechi.github.io
 
-repo_url: https://github.com/rmechi/python
+repo_url: https://github.com/rmechi/terraform
 edit_uri: edit/master/docs/docs
 
 theme:
@@ -22,7 +22,7 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Tutorial:
-      - Arrays: python/arrays.md
-      - Slices: python/slices.md
-      - GoMaps: python/maps.md
+      - Arrays: terraform/arrays.md
+      - Slices: terraform/slices.md
+      - GoMaps: terraform/maps.md
 
